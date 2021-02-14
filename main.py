@@ -37,18 +37,18 @@ def play(speed):
 
 def pending(decision):
     # 1. Display decision pending image
-    frame = cv2.cvtColor(cv2.imread("pending.png"), cv2.COLOR_BGR2RGB)
+    frame = cv2.cvtColor(cv2.imread("lordsDecisionPending.jpg"), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
-    frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
+    frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame)) # making image as tkinter compaitable 
     canvas.image = frame
     canvas.create_image(0,0, image=frame, anchor=tkinter.NW)
     # 2. Wait for 1 second
     time.sleep(1.5)
 
     # 3. Display sponsor image
-    frame = cv2.cvtColor(cv2.imread("sponsor.png"), cv2.COLOR_BGR2RGB)
+    frame = cv2.cvtColor(cv2.imread("lordsSponsor.jpg"), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
-    frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
+    frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))  # making image as tkinter compaitable 
     canvas.image = frame
     canvas.create_image(0,0, image=frame, anchor=tkinter.NW)
 
@@ -56,9 +56,9 @@ def pending(decision):
     time.sleep(2.5)
     # 5. Display out/notout image
     if decision == 'out':
-        decisionImg = "out.png"
+        decisionImg = "lordsOut.png"
     else:
-        decisionImg = "not_out.png"
+        decisionImg = "lordsNotOut.png"
     frame = cv2.cvtColor(cv2.imread(decisionImg), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
@@ -67,8 +67,8 @@ def pending(decision):
 
 
 def out():
-    thread = threading.Thread(target=pending, args=("out",))
-    thread.daemon = 1
+    thread = threading.Thread(target=pending, args=("out",))   # ',' is used as this is a tuple..    
+    thread.daemon = 1                  # In multitasking computer operating systems, a daemon is a computer program that runs as a background process, rather than being under the direct control of an interactive user.
     thread.start()
     print("Player is out")
 
