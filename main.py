@@ -56,9 +56,9 @@ def pending(decision):
     time.sleep(2.5)
     # 5. Display out/notout image
     if decision == 'out':
-        decisionImg = "lordsOut.png"
+        decisionImg = "lordsOut.jpg"
     else:
-        decisionImg = "lordsNotOut.png"
+        decisionImg = "lordsNotOut.jpg"
     frame = cv2.cvtColor(cv2.imread(decisionImg), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
