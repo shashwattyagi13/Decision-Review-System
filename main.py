@@ -1,7 +1,7 @@
 # All media file is available for download as a zip file
 import tkinter                            #Tkinter is our inbuilt package no need to install it..
                                           #It is a standard Python interface to the Tk GUI toolkit shipped with Python. Python with tkinter is the fastest and easiest way to create the GUI applications
-import cv2 # pip install opencv-python                    //it is module    //OpenCV is a cross-platform library using which we can develop real-time computer vision applications. It mainly focuses on image processing, video capture and analysis including features like face detection and object detection.
+import cv2 # pip install opencv-python                    //cv2, it is module    //OpenCV is a cross-platform library using which we can develop real-time computer vision applications. It mainly focuses on image processing, video capture and analysis including features like face detection and object detection.
                                                      # OpenCV is a huge open-source library for computer vision, machine learning, and image processing. OpenCV supports a wide variety of programming languages like Python, C++, Java, etc. It can process images and videos to identify objects, faces, or even the handwriting of a human.
 import PIL.Image, PIL.ImageTk # pip install pillow    //python imaging library , Image Tk is used for showing image in Tkinter
 from functools import partial
@@ -23,7 +23,7 @@ def play(speed):
     frame1 = stream.get(cv2.CAP_PROP_POS_FRAMES)
     stream.set(cv2.CAP_PROP_POS_FRAMES, frame1 + speed)
 
-    grabbed, frame = stream.read()   #grabbed is a boolean var which tells have you took frame or not
+    grabbed, frame = stream.read()   #grabbed is a boolean var which tells have you took frame correctly or not
     if not grabbed:
         exit()
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
