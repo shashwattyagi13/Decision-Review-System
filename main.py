@@ -11,7 +11,7 @@ from functools import partial
 
 import threading    # we are using this for preventing the program from blocking , and take care of changing the responsibility of images and if mainloop() does not work our GUI will be hanged
 import time
-import imutils # pip install imutils
+import imutils # pip install imutils        # used for resizing
 
 stream = cv2.VideoCapture("clip.mp4")
 flag = True
@@ -23,14 +23,14 @@ def play(speed):
     frame1 = stream.get(cv2.CAP_PROP_POS_FRAMES)
     stream.set(cv2.CAP_PROP_POS_FRAMES, frame1 + speed)
 
-    grabbed, frame = stream.read()
+    grabbed, frame = stream.read()   #grabbed is a boolean var which tells have you took frame or not
     if not grabbed:
         exit()
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(frame))
     canvas.image = frame
     canvas.create_image(0,0, image=frame, anchor=tkinter.NW)
-    if flag:
+    if flag:      # for blinking decision pending
         canvas.create_text(134, 26, fill="black", font="Times 26 bold", text="Decision Pending")
     flag = not flag
     
